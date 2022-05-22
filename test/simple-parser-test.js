@@ -108,6 +108,7 @@ Subject: =?ISO-2022-JP?B?GyRCM1g5OzU7PVEwdzgmPSQ4IUYkMnFKczlwGyhC?=
         test.ok(mail);
         test.equal(mail.headers.get('subject').trim(), expected);
         test.equal(mail.text.trim(), expected);
+        test.equal(mail.isSubBase64, true);
 
         test.done();
     });
