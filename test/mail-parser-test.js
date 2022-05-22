@@ -324,11 +324,11 @@ exports['Text encodings'] = {
                 'Subject: =?iso-8859-1?Q?Avaldu?= =?iso-8859-1?Q?s_lepingu_?=\r\n =?iso-8859-1?Q?l=F5petamise?= =?iso-8859-1?Q?ks?=\r\n',
             mail = Buffer.from(encodedText, 'utf-8');
 
-        let mailparser = new MailParser();
+        let mailparser = new MailParser({ subjectSep: ' ' });
         mailparser.end(mail);
         mailparser.on('data', () => false);
         mailparser.on('end', () => {
-            test.equal(mailparser.subject, 'Avaldus lepingu lõpetamiseks');
+            test.equal(mailparser.subject, 'Avaldu s lepingu  lõpetamise ks');
             test.equal(mailparser.from.value[0].name, 'ender');
             test.equal(mailparser.to.value[0].name, 'Keld Jørn Simonsen');
             test.done();
@@ -343,11 +343,11 @@ exports['Text encodings'] = {
                 'Subject: =?iso-8859-1?Q?Avaldu?= =?iso-8859-1?Q?s_lepingu_?=\r\n =?iso-8859-1?Q?l=F5petamise?= =?iso-8859-1?Q?ks?=\r\n',
             mail = Buffer.from(encodedText, 'utf-8');
 
-        let mailparser = new MailParser();
+        let mailparser = new MailParser({ subjectSep: ' ' });
         mailparser.end(mail);
         mailparser.on('data', () => false);
         mailparser.on('end', () => {
-            test.equal(mailparser.subject, 'Avaldus lepingu lõpetamiseks');
+            test.equal(mailparser.subject, 'Avaldu s lepingu  lõpetamise ks');
             test.equal(mailparser.from.value[0].name, ':.Good Test.:');
             test.equal(mailparser.to.value[0].name, 'Keld Jørn Simonsen');
             test.done();
@@ -1016,11 +1016,11 @@ exports['Transfer encoding'] = {
                 'Content-type: text/plain; charset=utf-8\r\nSubject: =?iso-8859-1?Q?Avaldu?= =?iso-8859-1?Q?s_lepingu_?=\r\n =?iso-8859-1?Q?l=F5petamise?= =?iso-8859-1?Q?ks?=\r\n',
             mail = Buffer.from(encodedText, 'utf-8');
 
-        let mailparser = new MailParser();
+        let mailparser = new MailParser({ subjectSep: ' ' });
         mailparser.end(mail);
         mailparser.on('data', () => false);
         mailparser.on('end', () => {
-            test.equal(mailparser.subject, 'Avaldus lepingu lõpetamiseks');
+            test.equal(mailparser.subject, 'Avaldu s lepingu  lõpetamise ks');
             test.done();
         });
     },
